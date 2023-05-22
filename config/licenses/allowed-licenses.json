@@ -1,0 +1,39 @@
+{
+  "allowedLicenses": [
+    {
+      "moduleLicense": "Apache License, Version 2.0",
+      "moduleName": ".*",
+      "moduleVersion": ".*"
+    },
+    {
+      "moduleLicense": "MIT",
+      "moduleName": ".*",
+      "moduleVersion": ".*"
+    },
+    {
+      "moduleLicense": "MIT License",
+      "moduleName": ".*",
+      "moduleVersion": ".*"
+    },
+    {
+      "moduleLicense": "Eclipse Public License - v 1.0",
+      "moduleName": ".*",
+      "moduleVersion": ".*"
+    },
+    {
+      "moduleLicense": "Eclipse Public License - v 2.0",
+      "moduleName": ".*",
+      "moduleVersion": ".*"
+    },
+    {
+      "moduleLicense": "BSD-2-Clause",
+      "moduleName": ".*",
+      "moduleVersion": ".*"
+    },
+    {
+      "moduleLicense": "Public Domain, per Creative Commons CC0",
+      "moduleName": ".*",
+      "moduleVersion": ".*"
+    }
+  ]
+}

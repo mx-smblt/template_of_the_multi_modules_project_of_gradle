@@ -1,0 +1,18 @@
+[versions]
+kotest = "5.6.1"
+mockito = "4.0.0"
+testcontainers = "1.18.1"
+
+[libraries]
+kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-datatest = { module = "io.kotest:kotest-framework-datatest", version.ref = "kotest" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito" }
+testcontainers-junit = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
+testcontainers-postgresql = { module = "org.testcontainers:postgresql", version.ref = "testcontainers" }
+
+[bundles]
+kotest = ["kotest-junit5", "kotest-core", "kotest-datatest"]
+mockito = ["mockito-core", "mockito-kotlin"]
+testcontainers-postgres = ["testcontainers-junit", "testcontainers-postgresql"]

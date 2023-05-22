@@ -1,0 +1,29 @@
+[versions]
+coroutines = "1.5.2"
+slf4j = "1.7.32"
+logback = "1.2.6"
+logstash = "6.6"
+jackson = "2.13.3"
+#testcontainers = "1.18.1"
+#detekt = "1.22.0"
+
+[libraries]
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "coroutines" }
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+
+
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+slf4j-over = { module = "org.slf4j:jcl-over-slf4j", version.ref = "slf4j" }
+logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logstash-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstash" }
+
+[bundles]
+logging = ["slf4j-api", "slf4j-over", "logback-core", "logback-classic", "logstash-encoder"]
+jackson = ["jackson-core", "jackson-kotlin"]
+
+[plugins]
+#kover = { id = "org.jetbrains.kotlinx.kover", version = "0.6.1" }
+#detekt-formatting = { id = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+#detekt-rules-libraries = { id = "io.gitlab.arturbosch.detekt:detekt-rules-libraries", version.ref = "detekt" }
