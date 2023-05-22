@@ -6,6 +6,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 /**
  * artifactName
+ * DOCKER_REGISTRY_ACCOUNT
  * DOCKER_REGISTRY_URL
  * DOCKER_REGISTRY_USERNAME
  * DOCKER_REGISTRY_PASSWORD
