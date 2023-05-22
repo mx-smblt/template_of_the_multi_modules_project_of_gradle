@@ -1,0 +1,1 @@
+# template_of_the_multi_modules_project_of_gradle
