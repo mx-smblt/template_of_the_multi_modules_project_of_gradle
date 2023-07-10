@@ -23,7 +23,7 @@ tasks {
     val artifactName: String by extra
     val abbrev = gitHash()
     val dockerRegistry = System.getProperty("DOCKER_REGISTRY_ACCOUNT")?.lowercase() ?: "local"
-    val imageName = "$dockerRegistry/${project.name}:${project.version}.${abbrev}"
+    val imageName = "$dockerRegistry/${rootProject.name}:${project.version}.${abbrev}"
     val workingDir = "app"
 
     val dockerFileCopy = register<Copy>("dockerFileCopy") {
