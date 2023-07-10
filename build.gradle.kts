@@ -15,3 +15,8 @@ subprojects {
     version = "0.0.1-SNAPSHOT"
     group = "io.github.template"
 }
+
+dependencies{
+    kover(project(":module-one"))
+    kover(project(":application"))
+}

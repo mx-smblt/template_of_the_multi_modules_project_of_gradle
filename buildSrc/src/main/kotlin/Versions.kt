@@ -1,5 +1,11 @@
+import org.gradle.api.JavaVersion
+
 internal object Versions {
     object JVM {
-        const val target = "17"
+        val target: String
+            get() = System.getenv("JAVA_VERSION") ?: "17"
+
+        val compatibility: JavaVersion
+            get() = JavaVersion.toVersion(target)
     }
 }

@@ -1,5 +1,4 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
-import kotlinx.kover.api.KoverTaskExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -10,6 +9,12 @@ plugins {
 }
 
 tasks {
+
+    java {
+        sourceCompatibility = Versions.JVM.compatibility
+        targetCompatibility = Versions.JVM.compatibility
+    }
+
     withType<KotlinCompile>()
         .configureEach {
             kotlinOptions {
@@ -24,12 +29,9 @@ tasks {
 
     withType<Test> {
         useJUnitPlatform()
-        extensions.configure(KoverTaskExtension::class) {
-            includes.addAll("io.github.dream.*")
-        }
     }
 }
 
 configure<DetektExtension> {
-    source = project.files("src/main/kotlin", "src/test/kotlin")
+    source.setFrom(project.files("src/main/kotlin", "src/test/kotlin"))
 }

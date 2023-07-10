@@ -20,13 +20,14 @@ plugins {
 }
 
 tasks {
-    val artifactName by extra { "" }
+    val artifactName: String by extra
     val abbrev = gitHash()
     val dockerRegistry = System.getProperty("DOCKER_REGISTRY_ACCOUNT")?.lowercase() ?: "local"
     val imageName = "$dockerRegistry/${project.name}:${project.version}.${abbrev}"
     val workingDir = "app"
 
     val dockerFileCopy = register<Copy>("dockerFileCopy") {
+        dependsOn(build)
         group = "docker"
         destinationDir = file("$buildDir/docker")
 
@@ -55,10 +56,8 @@ tasks {
     }
 
     val createDockerfile = register<Dockerfile>("dockerCreateDockerfile") {
-        group = "docker"
-
         dependsOn(dockerFileCopy)
-
+        group = "docker"
         destFile.set(project.file("build/docker/Dockerfile"))
         from("azul/zulu-openjdk-alpine:17.0.7-jre")
         runCommand("mkdir $workingDir && mkdir ${workingDir}/config")
@@ -71,9 +70,8 @@ tasks {
     }
 
     val buildImage = register<DockerBuildImage>("dockerBuildImage") {
-        group = "docker"
         dependsOn(createDockerfile)
-
+        group = "docker"
         inputDir.set(createDockerfile.get().destFile.get().asFile.parentFile)
         images.add(imageName)
     }
@@ -83,9 +81,8 @@ tasks {
     val dockerRegistryPassword = System.getProperty("DOCKER_REGISTRY_PASSWORD")
 
     register<DockerPushImage>("dockerPushImage") {
-        group = "docker"
         dependsOn(buildImage)
-
+        group = "docker"
         images.add(imageName)
         registryCredentials {
             url.set(dockerRegistryUrl)
@@ -101,8 +98,8 @@ gitProperties {
 
 fun gitHash(): String {
     fun getVersionDetails(): VersionDetails {
-        val versionDetails =
-            (extra["versionDetails"] as? groovy.lang.Closure<*>) ?: throw IllegalStateException("versionDetails not found.")
+        val versionDetails = (extra["versionDetails"] as? groovy.lang.Closure<*>)
+            ?: throw IllegalStateException("versionDetails not found.")
         return versionDetails() as VersionDetails
     }
 
